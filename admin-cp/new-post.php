@@ -45,8 +45,9 @@ if (isset($_POST['submit'])) {
                 if ($imageError === 0) {
                     if ($imageSize <= 3000000) {
                         $new_name_image = uniqid('post', false) . '.' . $imageExe;
-                        $image_Path = '../images/posts/' . $new_name_image;
+                        $image_Path = '../images/post/' . $new_name_image;
                         $image_DB = 'images/post/' . $new_name_image;
+
                         if (move_uploaded_file($imageTmp, $image_Path)) {
 
                             $insert = mysqli_query($connectToDB, "INSERT INTO `posts`(`title`,`post`,`category`,`image`,`author`,`status`,`created_at`) VALUES ('$title','$post','$category_Post','$image_DB','$_SESSION[id]','$status','$date')");
