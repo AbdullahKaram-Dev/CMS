@@ -16,6 +16,18 @@ if (isset($_GET['user_id']) && !empty($_GET['user_id'])){
 }
 
 
+$per_page = 3;
+
+if(!isset($_GET['page'])){
+
+    $page  = 1;
+}else{
+
+    $page = (int)$_GET['page'];
+}
+
+
+$start_from = ($page - 1) * $per_page;
 
 
 
@@ -48,7 +60,7 @@ if (isset($_GET['user_id']) && !empty($_GET['user_id'])){
 
 
 
-                        $Users = mysqli_query($connectToDB,"SELECT * FROM `members`");
+                        $Users = mysqli_query($connectToDB,"SELECT * FROM `members` LIMIT $start_from , $per_page");
                         $counter = 0;
                         while($User_Data = mysqli_fetch_assoc($Users)){
                             $counter++;
@@ -72,7 +84,26 @@ if (isset($_GET['user_id']) && !empty($_GET['user_id'])){
 
                         </tbody>
                     </table>
+                    <?php
 
+                    $sql = mysqli_query($connectToDB,"SELECT * FROM `members`");
+                    $Count_Users = mysqli_num_rows($sql);
+
+
+                    $total_page = ceil($Count_Users / $per_page);
+
+                    ?>
+                    <nav class="text-center">
+                        <ul class="pagination">
+
+                            <?php
+                            for ( $i = 1; $i <= $total_page; $i++ ){
+
+                                echo '<li '.($page == $i ? 'class="active"' : '').'><a href="users.php?page='.$i.'">'.$i.'</a></li>';
+                            }
+                            ?>
+                        </ul>
+                    </nav>
 
 
                 </div>

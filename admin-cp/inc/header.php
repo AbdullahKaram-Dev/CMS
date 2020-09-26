@@ -37,7 +37,8 @@ include_once  ('session.php');
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#" style="color: #2aabd2"><i class="glyphicon glyphicon-lock"></i> لــوحة الــتحكم </a>
+                <a class="navbar-brand" href="index.php" style="color: #2aabd2"><i class="glyphicon glyphicon-lock"></i> لــوحة الــتحكم </a>
+                <a class="navbar-brand" href="../index.php" style="color: #2aabd2"><i class="glyphicon glyphicon-home"></i> الرئيسية </a>
             </div>
 
 

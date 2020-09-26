@@ -30,6 +30,20 @@ if (isset($_GET['delete']) && !empty($_GET['delete'])){
     }
 }
 
+$per_page = 2;
+
+
+if (!isset($_GET['page'])){
+
+    $page = 1;
+}else{
+
+    $page = (int)$_GET['page'];
+}
+
+
+$start_from = ($page - 1) * $per_page;
+
 
 
 ?>
@@ -54,7 +68,7 @@ if (isset($_GET['delete']) && !empty($_GET['delete'])){
 
                       <?php
 
-                      $DATA = mysqli_query($connectToDB,"SELECT * FROM `category`");
+                      $DATA = mysqli_query($connectToDB,"SELECT * FROM `category` LIMIT $start_from , $per_page");
                       $counter = 0;
                       while($CATEGORY_DATA = mysqli_fetch_assoc($DATA)){
                           $counter++;
@@ -74,6 +88,32 @@ if (isset($_GET['delete']) && !empty($_GET['delete'])){
 
                       </tbody>
                    </table>
+                   <?php
+
+                   $sql = mysqli_query($connectToDB,"SELECT * FROM `category`");
+                   $count = mysqli_num_rows($sql);
+
+
+                   $total_page = ceil($count / $per_page);
+
+                   ?>
+
+                   <nav class="text-center">
+                       <ul class="pagination">
+
+                           <?php
+
+                           for ($i = 1; $i <= $total_page; $i++){
+
+                               echo '<li '.($page == $i ? 'class="active"': '').'><a href="category.php?page='.$i.'">'.$i.'</a></li>';
+
+                           }
+
+                           ?>
+                       </ul>
+                   </nav>
+
+
                    <?php if (isset($DeleteMessage)){ echo $DeleteMessage; }  ?>
                </div>
            </div>

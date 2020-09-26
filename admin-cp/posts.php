@@ -58,7 +58,21 @@ if (isset($_GET['delete']) && !empty($_GET['delete'])) {
 
                     <?php
 
-                    $DATA = mysqli_query($connectToDB, "SELECT * FROM `posts` p INNER JOIN `members` m WHERE p.author = m.user_id");
+
+                    $per_page = 3;
+
+                    if (!isset($_GET['page'])){
+                        $page = 1;
+
+                    }else{
+
+                        $page = (int)$_GET['page'];
+                    }
+
+                    $start_from = ($page - 1) * $per_page;
+
+
+                    $DATA = mysqli_query($connectToDB, "SELECT * FROM `posts` p INNER JOIN `members` m WHERE p.author = m.user_id ORDER BY `post_id` DESC LIMIT $start_from , $per_page");
                     $counter = 0;
                     while ($post = mysqli_fetch_assoc($DATA)) {
                         $counter++;
@@ -84,6 +98,26 @@ if (isset($_GET['delete']) && !empty($_GET['delete'])) {
                     </tbody>
 
                 </table>
+                <?php
+
+                    $page_sql = mysqli_query($connectToDB,"SELECT * FROM `posts`");
+                    $count_page = mysqli_num_rows($page_sql);
+
+
+                    $total_page = ceil($count_page / $per_page);
+                ?>
+                <nav class="text-center">
+                    <ul class="pagination">
+
+                  <?php
+                    for ( $i = 1; $i <= $total_page; $i++ ){
+
+                        echo '<li '.($page == $i ? 'class="active"' : '').'><a href="posts.php?page='.$i.'">'.$i.'</a></li>';
+                    }
+                  ?>
+                    </ul>
+                </nav>
+
 
                 <a href="posts.php" class="btn btn-info"> تحديث الصفحة </a>
             </div>

@@ -194,9 +194,9 @@ function category()
                         <label for="slide" class="col-sm-2 control-label">الواجهة</label>
                         <div class="col-sm-3">
                             <select class="form-control" id="slide" name="slide">
-                                <option value="" selected>أختر الصنف</option>
+                                <option value="">أختر الصنف</option>
                                 <?php foreach (category() as $cat): ?>
-                                    <option value="<?php echo $cat['category_id']; ?>" <?php echo($cat['category_name'] == $Setting->slide ? 'selected' : '') ?>><?php echo $cat['category_name']; ?></option>
+                                    <option value="<?php echo $cat['category_name']; ?>" <?php echo($cat['category_name'] == $Setting->slide ? 'selected' : '') ?>><?php echo $cat['category_name']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -213,9 +213,9 @@ function category()
                         <label for="section1" class="col-sm-2 control-label">القسم الأول</label>
                         <div class="col-sm-3">
                             <select class="form-control" id="section1" name="section1">
-                                <option value="" selected>أختر الصنف</option>
+                                <option value="">أختر الصنف</option>
                                 <?php foreach (category() as $cat): ?>
-                                    <option value="<?php echo $cat['category_id']; ?>" <?php echo($cat['category_name'] == $Setting->section_a ? 'selected' : '') ?>><?php echo $cat['category_name']; ?></option>
+                                    <option value="<?php echo $cat['category_name']; ?>" <?php echo($cat['category_name'] == $Setting->section_a ? 'selected' : '') ?>><?php echo $cat['category_name']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -231,9 +231,9 @@ function category()
                         <label for="section2" class="col-sm-2 control-label">القسم الثاني</label>
                         <div class="col-sm-3">
                             <select class="form-control" id="section2" name="section2">
-                                <option value="" selected>أختر الصنف</option>
+                                <option value="">أختر الصنف</option>
                                 <?php foreach (category() as $cat): ?>
-                                    <option value="<?php echo $cat['category_id']; ?> " <?php echo($cat['category_name'] == $Setting->section_b ? 'selected' : '') ?>><?php echo $cat['category_name']; ?></option>
+                                    <option value="<?php echo $cat['category_name']; ?>" <?php echo($cat['category_name'] == $Setting->section_b ? 'selected' : '') ?>><?php echo $cat['category_name']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -248,9 +248,9 @@ function category()
                         <label for="tab1" class="col-sm-2 control-label">التاب الأول</label>
                         <div class="col-sm-3">
                             <select class="form-control" id="tab1" name="tab1">
-                                <option value="" selected>أختر الصنف</option>
+                                <option value="">أختر الصنف</option>
                                 <?php foreach (category() as $cat): ?>
-                                    <option value="<?php echo $cat['category_id']; ?>" <?php echo($cat['category_name'] == $Setting->tab_a ? 'selected' : '') ?>><?php echo $cat['category_name']; ?></option>
+                                    <option value="<?php echo $cat['category_name']; ?>" <?php echo($cat['category_name'] == $Setting->tab_a ? 'selected' : '') ?>><?php echo $cat['category_name']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -265,9 +265,9 @@ function category()
                         <label for="tab2" class="col-sm-2 control-label">التاب الثاني</label>
                         <div class="col-sm-3">
                             <select class="form-control" id="tab2" name="tab2">
-                                <option value="" selected>أختر الصنف</option>
+                                <option value="">أختر الصنف</option>
                                 <?php foreach (category() as $cat): ?>
-                                    <option value="<?php echo $cat['category_id']; ?>" <?php echo($cat['category_name'] == $Setting->tab_b ? 'selected' : '') ?>><?php echo $cat['category_name']; ?></option>
+                                    <option value="<?php echo $cat['category_name']; ?>" <?php echo($cat['category_name'] == $Setting->tab_b ? 'selected' : '') ?>><?php echo $cat['category_name']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -282,9 +282,9 @@ function category()
                         <label for="tab3" class="col-sm-2 control-label">التاب الثالث</label>
                         <div class="col-sm-3">
                             <select class="form-control" id="tab3" name="tab3">
-                                <option value="" selected>أختر الصنف</option>
+                                <option value="">أختر الصنف</option>
                                 <?php foreach (category() as $cat): ?>
-                                    <option value="<?php echo $cat['category_id']; ?>" <?php echo($cat['category_name'] == $Setting->tab_c ? 'selected' : '') ?>><?php echo $cat['category_name']; ?></option>
+                                    <option value="<?php echo $cat['category_name']; ?>" <?php echo($cat['category_name'] == $Setting->tab_c ? 'selected' : '') ?>><?php echo $cat['category_name']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
