@@ -46,6 +46,7 @@ if (isset($_GET['delete']) && !empty($_GET['delete'])) {
                         <th>صورة المقالة</th>
                         <th>عنوان المقال</th>
                         <th>الكاتب</th>
+                        <th>الصنف</th>
                         <th>تاريخ الانشاء</th>
                         <th>مشاهدة المقالة</th>
                         <th>حالة المقالة</th>
@@ -82,6 +83,7 @@ if (isset($_GET['delete']) && !empty($_GET['delete'])) {
                            <td><img src="../' . $post['image'] . '" class="img-rounded" width="50px"/></td>
                            <td>' . substr($post['title'], 0, 30) . '...</td>
                            <td><b style="background-color: #D9EDF7;">' . strtoupper($post['username']) . '</b></td>
+                           <th>' . $post['category'] . '</th>
                            <td>' . $post['created_at'] . '</td>
                            <td><a href="../post.php?post-id=' . $post['post_id'] . '" style="margin-right: 20px;" target="_blank"><i class="far fa-eye fa-lg"></i></a></td>
                            <td>' . ($post['status'] == 'unpublished' ? '<a href="posts.php?status=published&post=' . $post['post_id'] . '&page=' . $page . '" class="btn btn-danger btn-xs"> معطلة </a>' : '<a href="posts.php?status=unpublished&post=' . $post['post_id'] . '&page=' . $page . '" class="btn btn-success btn-xs"> مفعلة </a>') . '</td>
