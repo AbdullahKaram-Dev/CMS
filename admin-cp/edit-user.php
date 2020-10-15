@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
                             $allowedExtension = ['gif', 'png', 'jpg', 'jpej'];
                             if (in_array($image_exe, $allowedExtension)) {
                                 if ($image_error === 0) {
-                                    if ($image_size >= 30000) {
+                                    if ($image_size <= 30000) {
 
                                         $new_image_name = uniqid('user', false) . '.' . $image_exe;
                                         $image_dir = '../images/avatar/' . $new_image_name;
@@ -79,7 +79,7 @@ if (isset($_POST['submit'])) {
 
                                     } else {
 
-                                        $message = '<div class="alert alert-danger" role="alert">MP3 حجم الصورة كبير جدا لا يجب ان يتعدى   </div>';
+                                        $message = '<div class="alert alert-danger" role="alert"> MP3 حجم الصورة كبير جدا لا يجب ان يتعدى   </div>';
                                     }
 
                                 } else {
@@ -121,13 +121,19 @@ if (isset($_POST['submit'])) {
 
                     if ($image_name != '') {
 
+                        $image = $_FILES['image'];
+                        $image_name = $image['name'];
+                        $image_tmp = $image['tmp_name'];
+                        $image_size = $image['size'];
+                        $image_error = $image['error'];
+
                         $image_exe = explode('.', $image_name);
                         $image_exe = strtolower(end($image_exe));
 
                         $allowedExtension = ['gif', 'png', 'jpg', 'jpej'];
                         if (in_array($image_exe, $allowedExtension)) {
                             if ($image_error === 0) {
-                                if ($image_size >= 30000) {
+                                if ($image_size <= 30000) {
 
                                     $new_image_name = uniqid('user', false) . '.' . $image_exe;
                                     $image_dir = '../images/avatar/' . $new_image_name;
@@ -161,7 +167,7 @@ if (isset($_POST['submit'])) {
 
                                 } else {
 
-                                    $message = '<div class="alert alert-danger" role="alert">MP3 حجم الصورة كبير جدا لا يجب ان يتعدى   </div>';
+                                    $message = '<div class="alert alert-danger" role="alert"> MP3 حجم الصورة كبير جدا لا يجب ان يتعدى   </div>';
                                 }
 
                             } else {
@@ -220,7 +226,7 @@ if (isset($_POST['submit'])) {
                                 $allowedExtension = ['gif', 'png', 'jpg', 'jpej'];
                                 if (in_array($image_exe, $allowedExtension)) {
                                     if ($image_error === 0) {
-                                        if ($image_size >= 30000) {
+                                        if ($image_size <= 30000) {
 
                                             $new_image_name = uniqid('user', false) . '.' . $image_exe;
                                             $image_dir = '../images/avatar/' . $new_image_name;
@@ -305,7 +311,7 @@ if (isset($_POST['submit'])) {
                             $allowedExtension = ['gif', 'png', 'jpg', 'jpej'];
                             if (in_array($image_exe, $allowedExtension)) {
                                 if ($image_error === 0) {
-                                    if ($image_size >= 30000) {
+                                    if ($image_size <= 30000) {
 
                                         $new_image_name = uniqid('user', false) . '.' . $image_exe;
                                         $image_dir = '../images/avatar/' . $new_image_name;
@@ -340,7 +346,7 @@ if (isset($_POST['submit'])) {
 
                                     } else {
 
-                                        $message = '<div class="alert alert-danger" role="alert">MP3 حجم الصورة كبير جدا لا يجب ان يتعدى   </div>';
+                                        $message = '<div class="alert alert-danger" role="alert"> MP3 حجم الصورة كبير جدا لا يجب ان يتعدى   </div>';
                                     }
 
                                 } else {
@@ -402,7 +408,7 @@ if (isset($_POST['submit'])) {
                                 $allowedExtension = ['gif', 'png', 'jpg', 'jpej'];
                                 if (in_array($image_exe, $allowedExtension)) {
                                     if ($image_error === 0) {
-                                        if ($image_size >= 30000) {
+                                        if ($image_size <= 30000) {
 
                                             $new_image_name = uniqid('user', false) . '.' . $image_exe;
                                             $image_dir = '../images/avatar/' . $new_image_name;
@@ -438,7 +444,7 @@ if (isset($_POST['submit'])) {
 
                                         } else {
 
-                                            $message = '<div class="alert alert-danger" role="alert">MP3 حجم الصورة كبير جدا لا يجب ان يتعدى   </div>';
+                                            $message = '<div class="alert alert-danger" role="alert"> MP3 حجم الصورة كبير جدا لا يجب ان يتعدى   </div>';
                                         }
 
                                     } else {
@@ -487,7 +493,7 @@ if (isset($_POST['submit'])) {
                             $allowedExtension = ['gif', 'png', 'jpg', 'jpej'];
                             if (in_array($image_exe, $allowedExtension)) {
                                 if ($image_error === 0) {
-                                    if ($image_size >= 30000) {
+                                    if ($image_size <= 30000) {
 
                                         $new_image_name = uniqid('user', false) . '.' . $image_exe;
                                         $image_dir = '../images/avatar/' . $new_image_name;
@@ -522,7 +528,7 @@ if (isset($_POST['submit'])) {
 
                                     } else {
 
-                                        $message = '<div class="alert alert-danger" role="alert">MP3 حجم الصورة كبير جدا لا يجب ان يتعدى   </div>';
+                                        $message = '<div class="alert alert-danger" role="alert"> MP3 حجم الصورة كبير جدا لا يجب ان يتعدى   </div>';
                                     }
 
                                 } else {
@@ -580,7 +586,7 @@ if (isset($_POST['submit'])) {
                         $allowedExtension = ['gif', 'png', 'jpg', 'jpej'];
                         if (in_array($image_exe, $allowedExtension)) {
                             if ($image_error === 0) {
-                                if ($image_size >= 30000) {
+                                if ($image_size <= 30000) {
 
                                     $new_image_name = uniqid('user', false) . '.' . $image_exe;
                                     $image_dir = '../images/avatar/' . $new_image_name;
@@ -617,7 +623,7 @@ if (isset($_POST['submit'])) {
 
                                 } else {
 
-                                    $message = '<div class="alert alert-danger" role="alert">MP3 حجم الصورة كبير جدا لا يجب ان يتعدى   </div>';
+                                    $message = '<div class="alert alert-danger" role="alert"> MP3 حجم الصورة كبير جدا لا يجب ان يتعدى   </div>';
                                 }
 
                             } else {
@@ -667,7 +673,7 @@ if (isset($_POST['submit'])) {
                     $allowedExtension = ['gif', 'png', 'jpg', 'jpej'];
                     if (in_array($image_exe, $allowedExtension)) {
                         if ($image_error === 0) {
-                            if ($image_size >= 30000) {
+                            if ($image_size <= 30000) {
 
                                 $new_image_name = uniqid('user', false) . '.' . $image_exe;
                                 $image_dir = '../images/avatar/' . $new_image_name;
@@ -703,7 +709,7 @@ if (isset($_POST['submit'])) {
 
                             } else {
 
-                                $message = '<div class="alert alert-danger" role="alert">MP3 حجم الصورة كبير جدا لا يجب ان يتعدى   </div>';
+                                $message = '<div class="alert alert-danger" role="alert"> MP3 حجم الصورة كبير جدا لا يجب ان يتعدى   </div>';
                             }
 
                         } else {

@@ -3,6 +3,11 @@ session_start();
 include_once ('config.php');
 include_once ('function.php');
 
+$settings = mysqli_query($connectToDB,"SELECT * FROM `settings`");
+$setting  = mysqli_fetch_assoc($settings);
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +17,7 @@ include_once ('function.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title><?php echo $setting['site_name']; ?></title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -35,13 +40,13 @@ include_once ('function.php');
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">اسم الموقع</a>
+            <a class="navbar-brand" href="index.php"><?php echo $setting['site_name']; ?></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">الرئيسية <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="index.php">الرئيسية <span class="sr-only">(current)</span></a></li>
                 <?php
                    $CATEGORY = mysqli_query($connectToDB,"SELECT * FROM `category`");
                    while($DATA = mysqli_fetch_assoc($CATEGORY)){
@@ -84,7 +89,7 @@ include_once ('function.php');
 </nav>
 <!-- logo site -->
 <section id="logo">
-    <img src="images/logo.jpg" width="320px" style="border: groove 3px blue;">
+    <img src="<?php echo $setting['logo']; ?>" width="320px" style="border: groove 3px blue;">
 </section>
 
 <!-- end logo site -->

@@ -16,7 +16,7 @@ if (isset($_GET['user_id']) && !empty($_GET['user_id'])){
 }
 
 
-$per_page = 3;
+$per_page = 2;
 
 if(!isset($_GET['page'])){
 

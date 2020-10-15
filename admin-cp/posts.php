@@ -12,19 +12,18 @@ if (isset($_GET['status']) && isset($_GET['post'])) {
 
 if (isset($_GET['delete']) && !empty($_GET['delete'])) {
 
-    if (is_int($_GET['delete'])) {
-        $sql = mysqli_query($connectToDB, "DELETE FROM `posts` WHERE `post_id` = '$id'");
-        if (isset($sql)) {
 
-            $message = '<div class="alert alert-success" role="alert"> تم الحذف بنجاح  </div>';
-        } else {
+    $id = $_GET['delete'];
 
-            $message = '<div class="alert alert-danger" role="alert"> ...حدث خطأ أثناء الحذف وجارى العمل على أصلاحة  </div>';
-        }
+    $sql = mysqli_query($connectToDB, "DELETE FROM `posts` WHERE `post_id` = '$id'");
+    if (isset($sql)) {
+
+        $message = '<div class="alert alert-success" role="alert"> تم الحذف بنجاح  </div>';
     } else {
 
-            $message = '<div class="alert alert-danger" role="alert"> هذا المعرف غير موجود  </div>';
+        $message = '<div class="alert alert-danger" role="alert"> ...حدث خطأ أثناء الحذف وجارى العمل على أصلاحة  </div>';
     }
+
 }
 
 
@@ -36,7 +35,7 @@ if (isset($_GET['delete']) && !empty($_GET['delete'])) {
         } ?>
         <div class="panel panel-info">
             <div class="panel-heading">
-                <b>  جـميع المقالات  </b>
+                <b> جـميع المقالات </b>
             </div>
             <div class="panel-body">
 
@@ -61,10 +60,10 @@ if (isset($_GET['delete']) && !empty($_GET['delete'])) {
 
                     $per_page = 3;
 
-                    if (!isset($_GET['page'])){
+                    if (!isset($_GET['page'])) {
                         $page = 1;
 
-                    }else{
+                    } else {
 
                         $page = (int)$_GET['page'];
                     }
@@ -84,10 +83,10 @@ if (isset($_GET['delete']) && !empty($_GET['delete'])) {
                            <td>' . substr($post['title'], 0, 30) . '...</td>
                            <td><b style="background-color: #D9EDF7;">' . strtoupper($post['username']) . '</b></td>
                            <td>' . $post['created_at'] . '</td>
-                           <td><a href="../post.php?post-id='.$post['post_id'].'" style="margin-right: 20px;" target="_blank"><i class="far fa-eye fa-lg"></i></a></td>
-                           <td>' . ($post['status'] == 'unpublished' ? '<a href="posts.php?status=published&post=' . $post['post_id'] . '" class="btn btn-danger btn-xs"> معطلة </a>' : '<a href="posts.php?status=unpublished&post=' . $post['post_id'] . '" class="btn btn-success btn-xs"> مفعلة </a>') . '</td>
-                           <td><a href="edit-post.php?post_id='.$post['post_id'].'" class="btn btn-warning btn-xs">تعديل</a></td>
-                           <td><a href="posts.php?delete=' . $post['post_id'] . '" class="btn btn-danger btn-xs">حذف</a></td>
+                           <td><a href="../post.php?post-id=' . $post['post_id'] . '" style="margin-right: 20px;" target="_blank"><i class="far fa-eye fa-lg"></i></a></td>
+                           <td>' . ($post['status'] == 'unpublished' ? '<a href="posts.php?status=published&post=' . $post['post_id'] . '&page=' . $page . '" class="btn btn-danger btn-xs"> معطلة </a>' : '<a href="posts.php?status=unpublished&post=' . $post['post_id'] . '&page=' . $page . '" class="btn btn-success btn-xs"> مفعلة </a>') . '</td>
+                           <td><a href="edit-post.php?post_id=' . $post['post_id'] . '" class="btn btn-warning btn-xs">تعديل</a></td>
+                           <td><a href="posts.php?delete=' . $post['post_id'] . '&page=' . $page . '" class="btn btn-danger btn-xs">حذف</a></td>
                        </tr>
                       ';
 
@@ -100,21 +99,21 @@ if (isset($_GET['delete']) && !empty($_GET['delete'])) {
                 </table>
                 <?php
 
-                    $page_sql = mysqli_query($connectToDB,"SELECT * FROM `posts`");
-                    $count_page = mysqli_num_rows($page_sql);
+                $page_sql = mysqli_query($connectToDB, "SELECT * FROM `posts`");
+                $count_page = mysqli_num_rows($page_sql);
 
 
-                    $total_page = ceil($count_page / $per_page);
+                $total_page = ceil($count_page / $per_page);
                 ?>
                 <nav class="text-center">
                     <ul class="pagination">
 
-                  <?php
-                    for ( $i = 1; $i <= $total_page; $i++ ){
+                        <?php
+                        for ($i = 1; $i <= $total_page; $i++) {
 
-                        echo '<li '.($page == $i ? 'class="active"' : '').'><a href="posts.php?page='.$i.'">'.$i.'</a></li>';
-                    }
-                  ?>
+                            echo '<li ' . ($page == $i ? 'class="active"' : '') . '><a href="posts.php?page=' . $i . '">' . $i . '</a></li>';
+                        }
+                        ?>
                     </ul>
                 </nav>
 
