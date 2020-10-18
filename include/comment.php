@@ -17,9 +17,9 @@ if (isset($_POST['submit'])) {
     } else {
 
         $user_id = $_SESSION['id'];
-        $created_at = date('Y-m-d');
+        $created_at = date('Y-m-d : h-i-sa');
 
-        $add_comment = mysqli_query($connectToDB,"INSERT INTO `comments` (`post_id`,`user_id`,`title`,`comment`,`created_at`)
+        $add_comment = mysqli_query($connectToDB,"INSERT INTO `comments` (`post_id`,`user_id`,`title`,`comment`,`created`)
           VALUES ('$id','$user_id','$title','$comment','$created_at')");
         if (! $add_comment) {
 

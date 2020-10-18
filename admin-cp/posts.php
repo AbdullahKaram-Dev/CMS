@@ -85,7 +85,7 @@ if (isset($_GET['delete']) && !empty($_GET['delete'])) {
                            <td><b style="background-color: #D9EDF7;">' . strtoupper($post['username']) . '</b></td>
                            <th>' . $post['category'] . '</th>
                            <td>' . $post['created_at'] . '</td>
-                           <td><a href="../post.php?post-id=' . $post['post_id'] . '" style="margin-right: 20px;" target="_blank"><i class="far fa-eye fa-lg"></i></a></td>
+                           <td><a href="../post.php?id=' . $post['post_id'] . '" style="margin-right: 20px;" target="_blank"><i class="far fa-eye fa-lg"></i></a></td>
                            <td>' . ($post['status'] == 'unpublished' ? '<a href="posts.php?status=published&post=' . $post['post_id'] . '&page=' . $page . '" class="btn btn-danger btn-xs"> معطلة </a>' : '<a href="posts.php?status=unpublished&post=' . $post['post_id'] . '&page=' . $page . '" class="btn btn-success btn-xs"> مفعلة </a>') . '</td>
                            <td><a href="edit-post.php?post_id=' . $post['post_id'] . '" class="btn btn-warning btn-xs">تعديل</a></td>
                            <td><a href="posts.php?delete=' . $post['post_id'] . '&page=' . $page . '" class="btn btn-danger btn-xs">حذف</a></td>
