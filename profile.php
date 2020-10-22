@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once ('include/header.php');
 include_once ('include/sidebar.php');
 
@@ -23,7 +23,7 @@ if (mysqli_num_rows($userData) != 1) {
     </ol>
     <div class="col-lg-12 art_bg">
         <div class="page-header">
-            <h1><?= ucwords($user->username); ?> <small><?= ($user->role == 'admin' ? 'المدير' : '') ?></small></h1>
+            <h1><?= ucwords($user->username); ?> <small></small></h1>
         </div>
 
     </div>

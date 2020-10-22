@@ -28,6 +28,9 @@ $setting  = mysqli_fetch_assoc($settings);
     <!-- لينك مكتبة فونت اوسوم -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
 
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -40,7 +43,6 @@ $setting  = mysqli_fetch_assoc($settings);
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php"><?php echo $setting['site_name']; ?></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->

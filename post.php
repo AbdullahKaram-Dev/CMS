@@ -8,8 +8,12 @@ $post = mysqli_fetch_object($Select_Post);
 
 
 
-$query = mysqli_query($connectToDB,"SELECT * FROM `comments` c INNER JOIN `members` m ON c.user_id = m.user_id WHERE `post_id` = '$id' AND `status` = 'published'");
+$query = mysqli_query($connectToDB,"SELECT * , c.created_at AS com_created_at FROM `comments` c INNER JOIN `members` m ON c.user_id = m.user_id WHERE `post_id` = '$id' AND `status` = 'published'");
 $comments = mysqli_fetch_all($query,MYSQLI_ASSOC);
+
+$avgRating = mysqli_query($connectToDB,"SELECT AVG(`rating`) AS rate FROM `rating` WHERE `post_id` = '$id'");
+$avg = mysqli_fetch_assoc($avgRating);
+
 
 ?>
     <article class="col-md-9 col-lg-9">
@@ -25,12 +29,41 @@ $comments = mysqli_fetch_all($query,MYSQLI_ASSOC);
                                 style="color: blue;">*</strong></h1>
                     <img src="<?= $post->image; ?>" width="100%" style="border: groove 1px blue;max-height: 400px">
                 </div>
-
-                <strong></strong>
                 <div class="col-md-12">
                     <div class="col-md-12 author_post">
+                        <!-- start rating-->
+                        <form action="rating.php"  method="post" id="rating">
+                        <div class="rating" style="padding-bottom: 1px">
+                        <input type="radio" value="5"  name="star" id="star5"><label  for="star5">
+
+                            </label>
+                        <input type="radio" value="4"  name="star" id="star4"><label  for="star4">
+
+                            </label>
+                        <input type="radio" value="3"  name="star" id="star3"><label  for="star3">
+
+                            </label>
+                        <input type="radio" value="2"  name="star" id="star2"><label  for="star2">
+
+                            </label>
+                        <input type="radio"  value="1"  name="star" id="star1"><label  for="star1">
+
+                            </label>
+                        </div>
+                            <input type="hidden" value="<?= $post->post_id; ?>" name="post_id">
+                            <div class="text-center" style="padding-bottom: 30px">
+                        <button class="btn btn-warning btn-xs" type="submit"  name="submit" >أرسل التقييم</button>
+
+                        </form>
+                        </div>
+
+                        <!-- end rating-->
+
+                        <div class="text-center" id="rating_result"></div>
+
                         <p class="pull-right"><i class="fas fa-user-alt"></i><a href="profile.php?user=<?= $post->user_id; ?>"> <?= $post->username; ?> </a></p>
                         <p class="pull-left"> <?= $post->created_at; ?> <i class="fas fa-stopwatch"></i></p>
+                        <div class="pull-left" style="margin-left: 10px"><li class="fa fa-star" style="color: orange"></li><strong>AVG-Rate:</strong> <?= '('.ceil($avg['rate']).')';  ?></div>
                     </div>
                     <p><?= strip_tags($post->post); ?></p>
                     <div class="clearfix"></div>
@@ -54,7 +87,7 @@ $comments = mysqli_fetch_all($query,MYSQLI_ASSOC);
                     </div>
                     <div class="col-md-12">
                         <hr style=" width: 100%;height: 1px;background-color: blue; margin-top: 0; margin-bottom: 8px;"/>
-                        <p class="pull-left"> <?= $comment['created']; ?> <i class="fas fa-stopwatch"></i></p>
+                        <p class="pull-left"> <?= $comment['com_created_at']; ?> <i class="fas fa-stopwatch"></i></p>
                         <p class="pull-right"> تم التعليق بواسطة <i class="fas fa-user-alt"></i><a href="profile.php?user=<?= $comment['user_id']; ?>"> <?= $comment['username']; ?> </a></p>
                     </div>
                     <div class="clearfix"></div>
@@ -62,7 +95,6 @@ $comments = mysqli_fetch_all($query,MYSQLI_ASSOC);
             </div>
         </div>
         <?php endforeach; ?>
-
 
         <!-- end comment are -->
         <?php if (! empty($_SESSION['id'])) :?>
