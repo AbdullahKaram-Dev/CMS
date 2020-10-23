@@ -1,8 +1,8 @@
 <?php
-ob_start();
-include_once  ('session.php');
+if (! session_id()){
+    session_start();
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="ar">
 <head>

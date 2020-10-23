@@ -3,6 +3,10 @@ include_once ('inc/header.php');
 include_once ('inc/sidebar.php');
 include_once ('../include/config.php');
 
+if ($_SESSION['role'] != 'admin'){
+    header("LOCATION: index.php");
+
+}
 
 if (isset($_GET['user_id']) && !empty($_GET['user_id'])){
 

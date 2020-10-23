@@ -1,10 +1,11 @@
 <?php
+session_start();
 include_once ('inc/header.php');
 include_once ('inc/sidebar.php');
 include_once ('../include/config.php');
 
 
-$user = mysqli_query($connectToDB,"SELECT email,role,username,avatar FROM `members` WHERE `user_id` = '$_SESSION[id]'");
+$user = mysqli_query($connectToDB,"SELECT user_id,email,role,username,avatar FROM `members` WHERE `user_id` = '$_SESSION[id]'");
 $user = mysqli_fetch_object($user);
 
 
@@ -34,7 +35,7 @@ $All_Comments = mysqli_num_rows($All_Comments);
                             <div class="text-right">
                                 <p> البريد : <?php echo $user->email; ?></p>
                                 <p> الصلاحية : <?php echo $user->role; ?></p>
-                                <p class="text-center"><a href="#" class="btn btn-info btn-xs">تعديل البيانات</a></p>
+                                <p class="text-center"><a href="edit-user.php?user=<?= $user->user_id; ?>" class="btn btn-info btn-xs">تعديل البيانات</a></p>
                             </div>
                         </div>
                     </div>
@@ -127,8 +128,8 @@ $All_Comments = mysqli_num_rows($All_Comments);
                       <tr>
                            <td>' . $counter . '</td>
                            <td><img src="../' . $post['image'] . '" class="img-rounded" width="50px"/></td>
-                           <td>' . substr($post['title'], 0, 30) . '...</td>
-                           <td><b style="background-color: #D9EDF7;">' . strtoupper($post['username']) . '</b></td>
+                           <td>' . substr($post['title'], 0, 100) . '...</td>
+                           <td><b style="background-color: #D9EDF7;">' .$post['username']. '</b></td>
                            <td>' . $post['created_at'] . '</td>
                            <td><a href="../post.php?post-id='.$post['post_id'].'" style="margin-right: 20px;" target="_blank"><i class="far fa-eye fa-lg"></i></a></td>
                            <td>' . ($post['status'] == 'unpublished' ? '<a href="posts.php?status=published&post=' . $post['post_id'] . '" class="btn btn-danger btn-xs"> معطلة </a>' : '<a href="posts.php?status=unpublished&post=' . $post['post_id'] . '" class="btn btn-success btn-xs"> مفعلة </a>') . '</td>

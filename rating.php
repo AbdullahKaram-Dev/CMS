@@ -28,8 +28,6 @@ if (!empty($_SESSION['id'])) {
 
                 echo '<br><br><strong style="color: #2aabd2">عفواٌ لقد قمت بتقييم هذة المقالة من قبل</strong>';
             }
-
-
         }
 
     } else {

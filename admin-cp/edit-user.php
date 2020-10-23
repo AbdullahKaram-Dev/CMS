@@ -3,6 +3,11 @@ include_once('inc/header.php');
 include_once('inc/sidebar.php');
 include_once('../include/config.php');
 
+if ($_SESSION['role'] != 'admin'){
+    header("LOCATION: index.php");
+    exit();
+}
+
 $id = intval($_GET['user_id']);
 $Data_User = mysqli_query($connectToDB, "SELECT * FROM `members` WHERE `user_id` = '$id' ");
 $user = mysqli_fetch_assoc($Data_User);

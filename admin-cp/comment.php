@@ -81,8 +81,8 @@ if (isset($_GET['delete']) && !empty($_GET['delete'])) {
                            <td>' . $counter . '</td>
                            <td>' . substr($comment['title'], 0, 100) .'</td>
                            <td>' . substr($comment['comment'], 0, 200) . '</td>
-                           <td><b style="background-color: #D9EDF7;">' . strtoupper($comment['username']) . '</b></td>
-                           <td>' . $comment['created'] . '</td>
+                           <td><b style="background-color: #D9EDF7;">' . $comment['username'] . '</b></td>
+                           <td>' . $comment['created_at'] . '</td>
                            <td><a href="../post.php?id=' . $comment['post_id'] . '" style="margin-right: 20px;" target="_blank"><i class="far fa-eye fa-lg"></i></a></td>
                            <td>' . ($comment['status'] == 'unpublished' ? '<a href="comment.php?status=published&comment=' . $comment['comment_id'] . '&page=' . $page . '" class="btn btn-danger btn-xs"> معطلة </a>' : '<a href="comment.php?status=unpublished&comment=' . $comment['comment_id'] . '&page=' . $page . '" class="btn btn-success btn-xs"> مفعلة </a>') . '</td>
                            <td><a href="edit-comment.php?post_id=' . $comment['comment_id'] . '" class="btn btn-warning btn-xs">تعديل</a></td>

@@ -110,22 +110,22 @@ function login()
     </div>
     <hr style=" width: 200px;height: 2px;background-color: blue;">
         <div class="col-md-12">
-            <div class="row">
+          
                 <p><strong> البريد الألكتروني : </strong>' . $_SESSION['email'] . '</p>
                 <p><strong> رابط الفيس بوك : </strong><a href="' . $_SESSION['facebook'] . '" target="_blank"><i class="fab fa-facebook fa-lg" style="color: darkblue;"></i></a></p>
                 <p><strong> رابط تويتر : </strong><a href="' . $_SESSION['twitter'] . '" target="_blank"><i class="fab fa-twitter fa-lg" style="color: lightblue;"></i></a></p>
                 <p><strong> رابط اليوتيوب : </strong><a href="' . $_SESSION['youtube'] . '" target="_blank"><i class="fab fa-youtube fa-lg" style="color: red;"></i></a></p>
 
-            </div>
+            
         </div>
     <div class="panel-footer">
         <div class="col-md-12">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 ">
                ';
 
-        if ($_SESSION['role'] == 'admin') {
-            echo ' <a href="admin-cp/index.php" class="btn btn-success pull-left"> لوحة التحكم </a>';
+        if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'writer') {
+            echo ' <a href="admin-cp/index.php" class="btn btn-success pull-right"> لوحة التحكم </a>';
 
         }
 
@@ -133,12 +133,13 @@ function login()
                 
                 </div>
                 <div class="col-md-6">
-                     <a href="" class="btn btn-primary pull-right"> الصفحة الشخصية </a>
+                     <a href="edit-profile.php?user='.$_SESSION['id'].'" class="btn btn-primary pull-left"> الصفحة الشخصية </a>
                 </div>
                 </div>
                 </div>
                 <div class="clearfix"></div>
             </div>
+        </div>
         </div>
         ';
 
