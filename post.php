@@ -12,8 +12,8 @@ $query = mysqli_query($connectToDB,"SELECT * , c.created_at AS com_created_at FR
 $comments = mysqli_fetch_all($query,MYSQLI_ASSOC);
 
 $avgRating = mysqli_query($connectToDB,"SELECT AVG(`rating`) AS rate FROM `rating` WHERE `post_id` = '$id'");
-$avg = mysqli_fetch_assoc($avgRating);
-
+$Result = mysqli_fetch_assoc($avgRating);
+$avg = ceil($Result['rate']);
 
 ?>
     <article class="col-md-9 col-lg-9">
@@ -63,7 +63,12 @@ $avg = mysqli_fetch_assoc($avgRating);
 
                         <p class="pull-right"><i class="fas fa-user-alt"></i><a href="profile.php?user=<?= $post->user_id; ?>"> <?= $post->username; ?> </a></p>
                         <p class="pull-left"> <?= $post->created_at; ?> <i class="fas fa-stopwatch"></i></p>
-                        <div class="pull-left" style="margin-left: 10px"><li class="fa fa-star" style="color: orange"></li><strong>AVG-Rate:</strong> <?= ceil($avg['rate']);  ?></div>
+                        <div class="pull-left" style="margin-left: 10px">
+                            <?php for($i=1; $i <= $avg; $i++ )  : ?>
+                            <li class="fa fa-star" style="color: orange"></li>
+                            <?php endfor; ?>
+                        <b>:Rating</b>
+                        </div>
                     </div>
                     <p><?= strip_tags($post->post); ?></p>
                     <div class="clearfix"></div>
